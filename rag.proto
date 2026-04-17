@@ -8,6 +8,9 @@ option java_multiple_files = true;
 service RagService {
   // 질문에 대해 토큰 단위로 스트리밍 응답
   rpc Query (QueryRequest) returns (stream QueryResponse);
+
+  // Google Drive 폴더 동기화 트리거
+  rpc Sync (SyncRequest) returns (SyncResponse);
 }
 
 message QueryRequest {
@@ -19,4 +22,13 @@ message QueryResponse {
   string token = 1;           // 스트리밍 토큰 한 조각
   bool is_final = 2;          // 마지막 청크 여부
   repeated string sources = 3; // is_final=true 일 때만 포함
+}
+
+message SyncRequest {
+  string drive_folder_id = 1;
+}
+
+message SyncResponse {
+  int32 document_count = 1;
+  string message = 2;
 }
