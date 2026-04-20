@@ -4,18 +4,14 @@ set -euo pipefail
 PROTO_DIR="$(cd "$(dirname "$0")" && pwd)"
 PROTO_FILE="${PROTO_DIR}/rag.proto"
 
-# Java 생성
-JAVA_OUT="${PROTO_DIR}/gen-java"
-mkdir -p "${JAVA_OUT}"
-protoc \
-  --proto_path="${PROTO_DIR}" \
-  --java_out="${JAVA_OUT}" \
-  --grpc-java_out="${JAVA_OUT}" \
-  "${PROTO_FILE}"
+# Java — Gradle handles this now
+echo "Java: use './gradlew build' instead"
 
 # Python 생성
 PYTHON_OUT="${PROTO_DIR}/gen-python"
-mkdir -p "${PYTHON_OUT}"
+rm -rf "${PYTHON_OUT}"
+mkdir -p "${PYTHON_OUT}/myrag_proto/v1"
+
 python -m grpc_tools.protoc \
   --proto_path="${PROTO_DIR}" \
   --python_out="${PYTHON_OUT}" \
@@ -23,6 +19,8 @@ python -m grpc_tools.protoc \
   --pyi_out="${PYTHON_OUT}" \
   "${PROTO_FILE}"
 
+touch "${PYTHON_OUT}/myrag_proto/__init__.py"
+touch "${PYTHON_OUT}/myrag_proto/v1/__init__.py"
+
 echo "Generated:"
-echo "  Java   → ${JAVA_OUT}"
 echo "  Python → ${PYTHON_OUT}"

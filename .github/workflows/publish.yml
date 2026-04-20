@@ -1,0 +1,65 @@
+name: Publish Proto Packages
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  publish-java:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Publish Java JAR to GitHub Packages
+        run: ./gradlew publish
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_ACTOR: ${{ github.actor }}
+
+  publish-python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install build tools
+        run: pip install grpcio-tools build
+
+      - name: Generate Python stubs
+        run: |
+          mkdir -p gen-python/myrag_proto/v1
+          python -m grpc_tools.protoc \
+            --proto_path=. \
+            --python_out=gen-python \
+            --grpc_python_out=gen-python \
+            --pyi_out=gen-python \
+            rag.proto
+          touch gen-python/myrag_proto/__init__.py
+          touch gen-python/myrag_proto/v1/__init__.py
+
+      - name: Build wheel
+        run: python -m build
+
+      - name: Publish to GitHub Packages
+        run: |
+          pip install twine
+          twine upload --repository-url https://maven.pkg.github.com/qwerty55558/myrag_proto \
+            -u ${{ github.actor }} \
+            -p ${{ secrets.GITHUB_TOKEN }} \
+            dist/*

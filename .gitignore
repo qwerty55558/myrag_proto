@@ -4,3 +4,5 @@ __pycache__/
 *.pyc
 build/
 .gradle/
+dist/
+*.egg-info/
