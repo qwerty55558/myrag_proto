@@ -6,7 +6,7 @@ on:
       - 'v*'
 
 permissions:
-  contents: read
+  contents: write
   packages: write
 
 jobs:
@@ -46,20 +46,18 @@ jobs:
           mkdir -p gen-python/myrag_proto/v1
           python -m grpc_tools.protoc \
             --proto_path=. \
+            --proto_path=src/main/proto \
             --python_out=gen-python \
             --grpc_python_out=gen-python \
             --pyi_out=gen-python \
-            rag.proto
+            src/main/proto/rag.proto
           touch gen-python/myrag_proto/__init__.py
           touch gen-python/myrag_proto/v1/__init__.py
 
       - name: Build wheel
         run: python -m build
 
-      - name: Publish to GitHub Packages
-        run: |
-          pip install twine
-          twine upload --repository-url https://maven.pkg.github.com/qwerty55558/myrag_proto \
-            -u ${{ github.actor }} \
-            -p ${{ secrets.GITHUB_TOKEN }} \
-            dist/*
+      - name: Upload to GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*
