@@ -45,6 +45,16 @@ class RagServiceStub(object):
                 request_serializer=rag__pb2.IndexDocumentsRequest.SerializeToString,
                 response_deserializer=rag__pb2.IndexDocumentsResponse.FromString,
                 _registered_method=True)
+        self.ListIndexedDocuments = channel.unary_unary(
+                '/myrag.v1.RagService/ListIndexedDocuments',
+                request_serializer=rag__pb2.ListDocumentsRequest.SerializeToString,
+                response_deserializer=rag__pb2.ListDocumentsResponse.FromString,
+                _registered_method=True)
+        self.DeleteDocuments = channel.unary_unary(
+                '/myrag.v1.RagService/DeleteDocuments',
+                request_serializer=rag__pb2.DeleteDocumentsRequest.SerializeToString,
+                response_deserializer=rag__pb2.DeleteDocumentsResponse.FromString,
+                _registered_method=True)
 
 
 class RagServiceServicer(object):
@@ -65,6 +75,20 @@ class RagServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def ListIndexedDocuments(self, request, context):
+        """인덱싱된 문서 목록 조회
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def DeleteDocuments(self, request, context):
+        """인덱싱된 문서 삭제 (벡터 포함)
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_RagServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -77,6 +101,16 @@ def add_RagServiceServicer_to_server(servicer, server):
                     servicer.IndexDocuments,
                     request_deserializer=rag__pb2.IndexDocumentsRequest.FromString,
                     response_serializer=rag__pb2.IndexDocumentsResponse.SerializeToString,
+            ),
+            'ListIndexedDocuments': grpc.unary_unary_rpc_method_handler(
+                    servicer.ListIndexedDocuments,
+                    request_deserializer=rag__pb2.ListDocumentsRequest.FromString,
+                    response_serializer=rag__pb2.ListDocumentsResponse.SerializeToString,
+            ),
+            'DeleteDocuments': grpc.unary_unary_rpc_method_handler(
+                    servicer.DeleteDocuments,
+                    request_deserializer=rag__pb2.DeleteDocumentsRequest.FromString,
+                    response_serializer=rag__pb2.DeleteDocumentsResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -134,6 +168,60 @@ class RagService(object):
             '/myrag.v1.RagService/IndexDocuments',
             rag__pb2.IndexDocumentsRequest.SerializeToString,
             rag__pb2.IndexDocumentsResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def ListIndexedDocuments(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/myrag.v1.RagService/ListIndexedDocuments',
+            rag__pb2.ListDocumentsRequest.SerializeToString,
+            rag__pb2.ListDocumentsResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def DeleteDocuments(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/myrag.v1.RagService/DeleteDocuments',
+            rag__pb2.DeleteDocumentsRequest.SerializeToString,
+            rag__pb2.DeleteDocumentsResponse.FromString,
             options,
             channel_credentials,
             insecure,
