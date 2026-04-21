@@ -1,10 +1,10 @@
 [build-system]
-requires = ["setuptools>=68.0", "grpcio-tools>=1.72.0"]
+requires = ["setuptools>=68.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "myrag-proto"
-version = "1.0.1"
+version = "1.0.2"
 description = "MyRag gRPC proto stubs (Python)"
 requires-python = ">=3.11"
 dependencies = [
@@ -12,5 +12,6 @@ dependencies = [
     "protobuf>=5.29.0",
 ]
 
-[tool.setuptools.packages.find]
-where = ["gen-python"]
+[tool.setuptools]
+package-dir = {"" = "gen-python"}
+py-modules = ["rag_pb2", "rag_pb2_grpc"]

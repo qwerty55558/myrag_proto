@@ -1,5 +1,4 @@
 gen-java/
-gen-python/
 __pycache__/
 *.pyc
 build/
