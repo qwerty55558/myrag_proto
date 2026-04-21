@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "me.clauminirockpt"
-version = "1.0.1"
+version = "1.0.2"
 
 java {
     toolchain {
@@ -21,7 +21,7 @@ repositories {
 }
 
 val grpcVersion = "1.72.0"
-val protobufVersion = "4.30.2"
+val protobufVersion = "3.25.5"
 
 dependencies {
     implementation("io.grpc:grpc-protobuf:$grpcVersion")
