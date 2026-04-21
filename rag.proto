@@ -14,6 +14,12 @@ service RagService {
 
   // Google Drive 문서 인덱싱 트리거
   rpc IndexDocuments (IndexDocumentsRequest) returns (IndexDocumentsResponse);
+
+  // 인덱싱된 문서 목록 조회
+  rpc ListIndexedDocuments (ListDocumentsRequest) returns (ListDocumentsResponse);
+
+  // 인덱싱된 문서 삭제 (벡터 포함)
+  rpc DeleteDocuments (DeleteDocumentsRequest) returns (DeleteDocumentsResponse);
 }
 
 message ChatRequest {
@@ -46,4 +52,32 @@ message IndexDocumentsResponse {
   int32 chunk_count = 1;
   repeated string files = 2;
   string message = 3;
+}
+
+// 인덱싱된 문서 조회
+message ListDocumentsRequest {
+  string user_id = 1;
+}
+
+message ListDocumentsResponse {
+  repeated IndexedDocument documents = 1;
+}
+
+message IndexedDocument {
+  string document_id = 1;
+  string file_name = 2;
+  string source_uri = 3;
+  int32 chunk_count = 4;
+  string indexed_at = 5;
+}
+
+// 문서 삭제
+message DeleteDocumentsRequest {
+  repeated string document_ids = 1;
+  string user_id = 2;
+}
+
+message DeleteDocumentsResponse {
+  int32 deleted_count = 1;
+  string message = 2;
 }
