@@ -20,6 +20,9 @@ service RagService {
 
   // 인덱싱된 문서 삭제 (벡터 포함)
   rpc DeleteDocuments (DeleteDocumentsRequest) returns (DeleteDocumentsResponse);
+
+  // 지원 파일 확장자 목록 조회
+  rpc GetSupportedFormats (GetSupportedFormatsRequest) returns (GetSupportedFormatsResponse);
 }
 
 message ChatRequest {
@@ -70,6 +73,18 @@ message IndexedDocument {
   string source_uri = 3;
   int32 chunk_count = 4;
   google.protobuf.Timestamp indexed_at = 5;
+}
+
+// 지원 포맷 조회
+message GetSupportedFormatsRequest {}
+
+message GetSupportedFormatsResponse {
+  repeated SupportedFormat formats = 1;
+}
+
+message SupportedFormat {
+  string extension = 1;
+  string description = 2;
 }
 
 // 문서 삭제

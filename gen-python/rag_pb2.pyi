@@ -91,6 +91,24 @@ class IndexedDocument(_message.Message):
     indexed_at: _timestamp_pb2.Timestamp
     def __init__(self, document_id: _Optional[str] = ..., file_name: _Optional[str] = ..., source_uri: _Optional[str] = ..., chunk_count: _Optional[int] = ..., indexed_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
 
+class GetSupportedFormatsRequest(_message.Message):
+    __slots__ = ()
+    def __init__(self) -> None: ...
+
+class GetSupportedFormatsResponse(_message.Message):
+    __slots__ = ("formats",)
+    FORMATS_FIELD_NUMBER: _ClassVar[int]
+    formats: _containers.RepeatedCompositeFieldContainer[SupportedFormat]
+    def __init__(self, formats: _Optional[_Iterable[_Union[SupportedFormat, _Mapping]]] = ...) -> None: ...
+
+class SupportedFormat(_message.Message):
+    __slots__ = ("extension", "description")
+    EXTENSION_FIELD_NUMBER: _ClassVar[int]
+    DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
+    extension: str
+    description: str
+    def __init__(self, extension: _Optional[str] = ..., description: _Optional[str] = ...) -> None: ...
+
 class DeleteDocumentsRequest(_message.Message):
     __slots__ = ("document_ids", "user_id")
     DOCUMENT_IDS_FIELD_NUMBER: _ClassVar[int]

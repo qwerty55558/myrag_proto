@@ -55,6 +55,11 @@ class RagServiceStub(object):
                 request_serializer=rag__pb2.DeleteDocumentsRequest.SerializeToString,
                 response_deserializer=rag__pb2.DeleteDocumentsResponse.FromString,
                 _registered_method=True)
+        self.GetSupportedFormats = channel.unary_unary(
+                '/myrag.v1.RagService/GetSupportedFormats',
+                request_serializer=rag__pb2.GetSupportedFormatsRequest.SerializeToString,
+                response_deserializer=rag__pb2.GetSupportedFormatsResponse.FromString,
+                _registered_method=True)
 
 
 class RagServiceServicer(object):
@@ -89,6 +94,13 @@ class RagServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def GetSupportedFormats(self, request, context):
+        """지원 파일 확장자 목록 조회
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_RagServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -111,6 +123,11 @@ def add_RagServiceServicer_to_server(servicer, server):
                     servicer.DeleteDocuments,
                     request_deserializer=rag__pb2.DeleteDocumentsRequest.FromString,
                     response_serializer=rag__pb2.DeleteDocumentsResponse.SerializeToString,
+            ),
+            'GetSupportedFormats': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetSupportedFormats,
+                    request_deserializer=rag__pb2.GetSupportedFormatsRequest.FromString,
+                    response_serializer=rag__pb2.GetSupportedFormatsResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -222,6 +239,33 @@ class RagService(object):
             '/myrag.v1.RagService/DeleteDocuments',
             rag__pb2.DeleteDocumentsRequest.SerializeToString,
             rag__pb2.DeleteDocumentsResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def GetSupportedFormats(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/myrag.v1.RagService/GetSupportedFormats',
+            rag__pb2.GetSupportedFormatsRequest.SerializeToString,
+            rag__pb2.GetSupportedFormatsResponse.FromString,
             options,
             channel_credentials,
             insecure,
