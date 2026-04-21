@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "me.clauminirockpt"
-version = "1.0.6"
+version = "1.0.7"
 
 java {
     toolchain {
@@ -28,15 +28,6 @@ dependencies {
     implementation("io.grpc:grpc-stub:$grpcVersion")
     implementation("com.google.protobuf:protobuf-java:$protobufVersion")
     compileOnly("org.apache.tomcat:annotations-api:6.0.53")
-}
-
-sourceSets {
-    main {
-        proto {
-            srcDir(".")
-            include("*.proto")
-        }
-    }
 }
 
 protobuf {
