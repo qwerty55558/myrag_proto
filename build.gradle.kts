@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "me.clauminirockpt"
-version = "1.0.4"
+version = "1.0.5"
 
 java {
     toolchain {
@@ -64,7 +64,13 @@ publishing {
             groupId = "me.clauminirockpt"
             artifactId = "myrag-proto"
             from(components["java"])
+            // Gradle Module Metadata 비활성화 — JVM version 속성이 소비자 빌드를 깨뜨림
+            suppressPomMetadataWarningsFor("runtimeElements")
         }
     }
+}
+
+tasks.withType<GenerateModuleMetadata> {
+    enabled = false
 }
 
