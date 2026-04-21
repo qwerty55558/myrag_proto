@@ -56,6 +56,12 @@ message IndexDocumentsResponse {
   int32 chunk_count = 1;
   repeated string files = 2;
   string message = 3;
+  repeated FailedFile failed_files = 4;
+}
+
+message FailedFile {
+  string file_name = 1;
+  string reason = 2;
 }
 
 // 인덱싱된 문서 조회
