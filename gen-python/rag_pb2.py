@@ -25,7 +25,7 @@ _sym_db = _symbol_database.Default()
 from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\trag.proto\x12\x08myrag.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"\x99\x01\n\x0b\x43hatRequest\x12\r\n\x05query\x18\x01 \x01(\t\x12\x35\n\x11\x63urrent_timestamp\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\t\n\x01k\x18\x03 \x01(\x05\x12\x12\n\nsession_id\x18\x04 \x01(\t\x12\x0f\n\x07user_id\x18\x05 \x01(\t\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x06 \x01(\t\"Z\n\x0c\x43hatResponse\x12\r\n\x05token\x18\x01 \x01(\t\x12\x10\n\x08is_final\x18\x02 \x01(\x08\x12)\n\x07sources\x18\x03 \x03(\x0b\x32\x18.myrag.v1.SourceDocument\";\n\x0eSourceDocument\x12\r\n\x05title\x18\x01 \x01(\t\x12\x0b\n\x03uri\x18\x02 \x01(\t\x12\r\n\x05score\x18\x03 \x01(\x02\"W\n\x15IndexDocumentsRequest\x12\x17\n\x0f\x64rive_folder_id\x18\x01 \x01(\t\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x02 \x01(\t\x12\x0f\n\x07user_id\x18\x03 \x01(\t\"M\n\x16IndexDocumentsResponse\x12\x13\n\x0b\x63hunk_count\x18\x01 \x01(\x05\x12\r\n\x05\x66iles\x18\x02 \x03(\t\x12\x0f\n\x07message\x18\x03 \x01(\t\"\'\n\x14ListDocumentsRequest\x12\x0f\n\x07user_id\x18\x01 \x01(\t\"E\n\x15ListDocumentsResponse\x12,\n\tdocuments\x18\x01 \x03(\x0b\x32\x19.myrag.v1.IndexedDocument\"\x92\x01\n\x0fIndexedDocument\x12\x13\n\x0b\x64ocument_id\x18\x01 \x01(\t\x12\x11\n\tfile_name\x18\x02 \x01(\t\x12\x12\n\nsource_uri\x18\x03 \x01(\t\x12\x13\n\x0b\x63hunk_count\x18\x04 \x01(\x05\x12.\n\nindexed_at\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\x1c\n\x1aGetSupportedFormatsRequest\"I\n\x1bGetSupportedFormatsResponse\x12*\n\x07\x66ormats\x18\x01 \x03(\x0b\x32\x19.myrag.v1.SupportedFormat\"9\n\x0fSupportedFormat\x12\x11\n\textension\x18\x01 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x02 \x01(\t\"?\n\x16\x44\x65leteDocumentsRequest\x12\x14\n\x0c\x64ocument_ids\x18\x01 \x03(\t\x12\x0f\n\x07user_id\x18\x02 \x01(\t\"A\n\x17\x44\x65leteDocumentsResponse\x12\x15\n\rdeleted_count\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t2\xaf\x03\n\nRagService\x12\x37\n\x04\x43hat\x12\x15.myrag.v1.ChatRequest\x1a\x16.myrag.v1.ChatResponse0\x01\x12S\n\x0eIndexDocuments\x12\x1f.myrag.v1.IndexDocumentsRequest\x1a .myrag.v1.IndexDocumentsResponse\x12W\n\x14ListIndexedDocuments\x12\x1e.myrag.v1.ListDocumentsRequest\x1a\x1f.myrag.v1.ListDocumentsResponse\x12V\n\x0f\x44\x65leteDocuments\x12 .myrag.v1.DeleteDocumentsRequest\x1a!.myrag.v1.DeleteDocumentsResponse\x12\x62\n\x13GetSupportedFormats\x12$.myrag.v1.GetSupportedFormatsRequest\x1a%.myrag.v1.GetSupportedFormatsResponseB$\n me.clauminirockpt.myrag_proto.v1P\x01\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\trag.proto\x12\x08myrag.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"\x99\x01\n\x0b\x43hatRequest\x12\r\n\x05query\x18\x01 \x01(\t\x12\x35\n\x11\x63urrent_timestamp\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\t\n\x01k\x18\x03 \x01(\x05\x12\x12\n\nsession_id\x18\x04 \x01(\t\x12\x0f\n\x07user_id\x18\x05 \x01(\t\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x06 \x01(\t\"Z\n\x0c\x43hatResponse\x12\r\n\x05token\x18\x01 \x01(\t\x12\x10\n\x08is_final\x18\x02 \x01(\x08\x12)\n\x07sources\x18\x03 \x03(\x0b\x32\x18.myrag.v1.SourceDocument\";\n\x0eSourceDocument\x12\r\n\x05title\x18\x01 \x01(\t\x12\x0b\n\x03uri\x18\x02 \x01(\t\x12\r\n\x05score\x18\x03 \x01(\x02\"W\n\x15IndexDocumentsRequest\x12\x17\n\x0f\x64rive_folder_id\x18\x01 \x01(\t\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x02 \x01(\t\x12\x0f\n\x07user_id\x18\x03 \x01(\t\"y\n\x16IndexDocumentsResponse\x12\x13\n\x0b\x63hunk_count\x18\x01 \x01(\x05\x12\r\n\x05\x66iles\x18\x02 \x03(\t\x12\x0f\n\x07message\x18\x03 \x01(\t\x12*\n\x0c\x66\x61iled_files\x18\x04 \x03(\x0b\x32\x14.myrag.v1.FailedFile\"/\n\nFailedFile\x12\x11\n\tfile_name\x18\x01 \x01(\t\x12\x0e\n\x06reason\x18\x02 \x01(\t\"\'\n\x14ListDocumentsRequest\x12\x0f\n\x07user_id\x18\x01 \x01(\t\"E\n\x15ListDocumentsResponse\x12,\n\tdocuments\x18\x01 \x03(\x0b\x32\x19.myrag.v1.IndexedDocument\"\x92\x01\n\x0fIndexedDocument\x12\x13\n\x0b\x64ocument_id\x18\x01 \x01(\t\x12\x11\n\tfile_name\x18\x02 \x01(\t\x12\x12\n\nsource_uri\x18\x03 \x01(\t\x12\x13\n\x0b\x63hunk_count\x18\x04 \x01(\x05\x12.\n\nindexed_at\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\x1c\n\x1aGetSupportedFormatsRequest\"I\n\x1bGetSupportedFormatsResponse\x12*\n\x07\x66ormats\x18\x01 \x03(\x0b\x32\x19.myrag.v1.SupportedFormat\"9\n\x0fSupportedFormat\x12\x11\n\textension\x18\x01 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x02 \x01(\t\"?\n\x16\x44\x65leteDocumentsRequest\x12\x14\n\x0c\x64ocument_ids\x18\x01 \x03(\t\x12\x0f\n\x07user_id\x18\x02 \x01(\t\"A\n\x17\x44\x65leteDocumentsResponse\x12\x15\n\rdeleted_count\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t2\xaf\x03\n\nRagService\x12\x37\n\x04\x43hat\x12\x15.myrag.v1.ChatRequest\x1a\x16.myrag.v1.ChatResponse0\x01\x12S\n\x0eIndexDocuments\x12\x1f.myrag.v1.IndexDocumentsRequest\x1a .myrag.v1.IndexDocumentsResponse\x12W\n\x14ListIndexedDocuments\x12\x1e.myrag.v1.ListDocumentsRequest\x1a\x1f.myrag.v1.ListDocumentsResponse\x12V\n\x0f\x44\x65leteDocuments\x12 .myrag.v1.DeleteDocumentsRequest\x1a!.myrag.v1.DeleteDocumentsResponse\x12\x62\n\x13GetSupportedFormats\x12$.myrag.v1.GetSupportedFormatsRequest\x1a%.myrag.v1.GetSupportedFormatsResponseB$\n me.clauminirockpt.myrag_proto.v1P\x01\x62\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -42,23 +42,25 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_INDEXDOCUMENTSREQUEST']._serialized_start=365
   _globals['_INDEXDOCUMENTSREQUEST']._serialized_end=452
   _globals['_INDEXDOCUMENTSRESPONSE']._serialized_start=454
-  _globals['_INDEXDOCUMENTSRESPONSE']._serialized_end=531
-  _globals['_LISTDOCUMENTSREQUEST']._serialized_start=533
-  _globals['_LISTDOCUMENTSREQUEST']._serialized_end=572
-  _globals['_LISTDOCUMENTSRESPONSE']._serialized_start=574
-  _globals['_LISTDOCUMENTSRESPONSE']._serialized_end=643
-  _globals['_INDEXEDDOCUMENT']._serialized_start=646
-  _globals['_INDEXEDDOCUMENT']._serialized_end=792
-  _globals['_GETSUPPORTEDFORMATSREQUEST']._serialized_start=794
-  _globals['_GETSUPPORTEDFORMATSREQUEST']._serialized_end=822
-  _globals['_GETSUPPORTEDFORMATSRESPONSE']._serialized_start=824
-  _globals['_GETSUPPORTEDFORMATSRESPONSE']._serialized_end=897
-  _globals['_SUPPORTEDFORMAT']._serialized_start=899
-  _globals['_SUPPORTEDFORMAT']._serialized_end=956
-  _globals['_DELETEDOCUMENTSREQUEST']._serialized_start=958
-  _globals['_DELETEDOCUMENTSREQUEST']._serialized_end=1021
-  _globals['_DELETEDOCUMENTSRESPONSE']._serialized_start=1023
-  _globals['_DELETEDOCUMENTSRESPONSE']._serialized_end=1088
-  _globals['_RAGSERVICE']._serialized_start=1091
-  _globals['_RAGSERVICE']._serialized_end=1522
+  _globals['_INDEXDOCUMENTSRESPONSE']._serialized_end=575
+  _globals['_FAILEDFILE']._serialized_start=577
+  _globals['_FAILEDFILE']._serialized_end=624
+  _globals['_LISTDOCUMENTSREQUEST']._serialized_start=626
+  _globals['_LISTDOCUMENTSREQUEST']._serialized_end=665
+  _globals['_LISTDOCUMENTSRESPONSE']._serialized_start=667
+  _globals['_LISTDOCUMENTSRESPONSE']._serialized_end=736
+  _globals['_INDEXEDDOCUMENT']._serialized_start=739
+  _globals['_INDEXEDDOCUMENT']._serialized_end=885
+  _globals['_GETSUPPORTEDFORMATSREQUEST']._serialized_start=887
+  _globals['_GETSUPPORTEDFORMATSREQUEST']._serialized_end=915
+  _globals['_GETSUPPORTEDFORMATSRESPONSE']._serialized_start=917
+  _globals['_GETSUPPORTEDFORMATSRESPONSE']._serialized_end=990
+  _globals['_SUPPORTEDFORMAT']._serialized_start=992
+  _globals['_SUPPORTEDFORMAT']._serialized_end=1049
+  _globals['_DELETEDOCUMENTSREQUEST']._serialized_start=1051
+  _globals['_DELETEDOCUMENTSREQUEST']._serialized_end=1114
+  _globals['_DELETEDOCUMENTSRESPONSE']._serialized_start=1116
+  _globals['_DELETEDOCUMENTSRESPONSE']._serialized_end=1181
+  _globals['_RAGSERVICE']._serialized_start=1184
+  _globals['_RAGSERVICE']._serialized_end=1615
 # @@protoc_insertion_point(module_scope)

@@ -56,14 +56,24 @@ class IndexDocumentsRequest(_message.Message):
     def __init__(self, drive_folder_id: _Optional[str] = ..., access_token: _Optional[str] = ..., user_id: _Optional[str] = ...) -> None: ...
 
 class IndexDocumentsResponse(_message.Message):
-    __slots__ = ("chunk_count", "files", "message")
+    __slots__ = ("chunk_count", "files", "message", "failed_files")
     CHUNK_COUNT_FIELD_NUMBER: _ClassVar[int]
     FILES_FIELD_NUMBER: _ClassVar[int]
     MESSAGE_FIELD_NUMBER: _ClassVar[int]
+    FAILED_FILES_FIELD_NUMBER: _ClassVar[int]
     chunk_count: int
     files: _containers.RepeatedScalarFieldContainer[str]
     message: str
-    def __init__(self, chunk_count: _Optional[int] = ..., files: _Optional[_Iterable[str]] = ..., message: _Optional[str] = ...) -> None: ...
+    failed_files: _containers.RepeatedCompositeFieldContainer[FailedFile]
+    def __init__(self, chunk_count: _Optional[int] = ..., files: _Optional[_Iterable[str]] = ..., message: _Optional[str] = ..., failed_files: _Optional[_Iterable[_Union[FailedFile, _Mapping]]] = ...) -> None: ...
+
+class FailedFile(_message.Message):
+    __slots__ = ("file_name", "reason")
+    FILE_NAME_FIELD_NUMBER: _ClassVar[int]
+    REASON_FIELD_NUMBER: _ClassVar[int]
+    file_name: str
+    reason: str
+    def __init__(self, file_name: _Optional[str] = ..., reason: _Optional[str] = ...) -> None: ...
 
 class ListDocumentsRequest(_message.Message):
     __slots__ = ("user_id",)
