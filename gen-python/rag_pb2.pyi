@@ -10,30 +10,34 @@ from typing import ClassVar as _ClassVar, Optional as _Optional, Union as _Union
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class ChatRequest(_message.Message):
-    __slots__ = ("query", "current_timestamp", "k", "session_id", "user_id", "access_token")
+    __slots__ = ("query", "current_timestamp", "k", "session_id", "user_id", "access_token", "context_summary")
     QUERY_FIELD_NUMBER: _ClassVar[int]
     CURRENT_TIMESTAMP_FIELD_NUMBER: _ClassVar[int]
     K_FIELD_NUMBER: _ClassVar[int]
     SESSION_ID_FIELD_NUMBER: _ClassVar[int]
     USER_ID_FIELD_NUMBER: _ClassVar[int]
     ACCESS_TOKEN_FIELD_NUMBER: _ClassVar[int]
+    CONTEXT_SUMMARY_FIELD_NUMBER: _ClassVar[int]
     query: str
     current_timestamp: _timestamp_pb2.Timestamp
     k: int
     session_id: str
     user_id: str
     access_token: str
-    def __init__(self, query: _Optional[str] = ..., current_timestamp: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., k: _Optional[int] = ..., session_id: _Optional[str] = ..., user_id: _Optional[str] = ..., access_token: _Optional[str] = ...) -> None: ...
+    context_summary: str
+    def __init__(self, query: _Optional[str] = ..., current_timestamp: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., k: _Optional[int] = ..., session_id: _Optional[str] = ..., user_id: _Optional[str] = ..., access_token: _Optional[str] = ..., context_summary: _Optional[str] = ...) -> None: ...
 
 class ChatResponse(_message.Message):
-    __slots__ = ("token", "is_final", "sources")
+    __slots__ = ("token", "is_final", "sources", "context_summary")
     TOKEN_FIELD_NUMBER: _ClassVar[int]
     IS_FINAL_FIELD_NUMBER: _ClassVar[int]
     SOURCES_FIELD_NUMBER: _ClassVar[int]
+    CONTEXT_SUMMARY_FIELD_NUMBER: _ClassVar[int]
     token: str
     is_final: bool
     sources: _containers.RepeatedCompositeFieldContainer[SourceDocument]
-    def __init__(self, token: _Optional[str] = ..., is_final: bool = ..., sources: _Optional[_Iterable[_Union[SourceDocument, _Mapping]]] = ...) -> None: ...
+    context_summary: str
+    def __init__(self, token: _Optional[str] = ..., is_final: bool = ..., sources: _Optional[_Iterable[_Union[SourceDocument, _Mapping]]] = ..., context_summary: _Optional[str] = ...) -> None: ...
 
 class SourceDocument(_message.Message):
     __slots__ = ("title", "uri", "score")
