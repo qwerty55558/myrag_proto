@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "me.clauminirockpt"
-version = "1.0.9"
+version = "1.0.10"
 
 java {
     toolchain {

@@ -32,12 +32,14 @@ message ChatRequest {
   string session_id = 4;
   string user_id = 5;
   string access_token = 6;
+  string context_summary = 7;
 }
 
 message ChatResponse {
   string token = 1;
   bool is_final = 2;
   repeated SourceDocument sources = 3;
+  string context_summary = 4;
 }
 
 message SourceDocument {
